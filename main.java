@@ -41,7 +41,7 @@
 // --------------------------------------------------------------
 import java.util.Scanner;
 
-public class Main {
+public class main {
 
     public static void main(String[] args) {
 
@@ -61,6 +61,8 @@ public class Main {
 
         // prompt user for value membership level
         // (to complete)
+        System.out.print("Enter the level of membership you want: ");
+        membership_level = input.nextInt();
 
         // scan past lingering end-of-line character
         input.nextLine();
@@ -79,20 +81,57 @@ public class Main {
         System.out.print("Are you a student? (y/Y, n/N): ");
         yn_response = input.nextLine();
 
+        yn_response = yn_response.toUpperCase();
+
         // use nested if statements to determine membership fee
         // and assign to variable fee1
         // (to complete)
-    
-          
+        if(membership_level == 1)
+        {
+            fee1 = standard_membership_fee;
+        }
+        else if(membership_level == 2)
+        {
+            fee1 = enhanced_membership_fee;
+        }
+        else if(membership_level == 3)
+        {
+            fee1 = pro_membership_fee;
+        }
+        if(yn_response.equals("Y"))
+        {
+            fee1 = fee1 * student_discount;
+        }
         // use switch statement to determine membership fee
         // and assign to variable fee2
         // (to complete)
-
+        switch (membership_level) {
+            case 1:
+                fee2 = standard_membership_fee;
+                break;
+            case 2:
+                fee2 = enhanced_membership_fee;
+                break;
+            case 3:
+                fee2 = pro_membership_fee;
+                break;
+            default:
+                break;
+        }
+        switch (yn_response) {
+            case "Y":
+                fee2 = fee2 * student_discount;
+                break;
         
+            default:
+                break;
+        }
         System.out.println("\nResult of nested if statements:");
         // (to complete)
+        System.out.printf("Total cost: $%.2f", fee1);
       
         System.out.println("\nResult of switch statement:");
         // (to complete)
+        System.out.printf("Total cost: $%.2f", fee2);
     }
 }
